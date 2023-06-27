@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:ramdan_proj/shared/styles/colors.dart';
 
 ThemeData darkTheme = ThemeData(
+  fontFamily: 'calibrib',
   //lon kol haga x el pernamg
   primarySwatch: defaultColor,
   //scaffold color
@@ -67,7 +68,7 @@ ThemeData lightTheme= ThemeData(
     titleSpacing: 20.0,
     systemOverlayStyle: SystemUiOverlayStyle(
       //el line ely fo2 el app bar
-      statusBarColor: Colors.lightBlue.shade900,
+      statusBarColor: defColor,
       statusBarIconBrightness: Brightness.light,
     ),
   ),
@@ -76,7 +77,7 @@ ThemeData lightTheme= ThemeData(
     selectedItemColor: Colors.white,
     unselectedItemColor: Colors.white,
     elevation: 20.0,
-    backgroundColor: Colors.lightBlue.shade900,
+    backgroundColor: defColor,
   ),
   textTheme: const TextTheme(
     bodyText1: TextStyle(
@@ -85,4 +86,5 @@ ThemeData lightTheme= ThemeData(
       color: Colors.black,
     ),
   ),
+  fontFamily: 'calibrib',
 );

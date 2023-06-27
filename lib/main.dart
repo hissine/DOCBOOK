@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ramdan_proj/layout/docbook_app/cubit/cubit.dart';
-import 'package:ramdan_proj/layout/shop_app/cubit/cubit.dart';
-import 'package:ramdan_proj/layout/shop_app/shop_layout.dart';
-import 'package:ramdan_proj/modules/shop_app/login/shop_login_screen.dart';
-import 'package:ramdan_proj/modules/shop_app/onboarding/onboarding_screen.dart';
+import 'package:ramdan_proj/modules/docbook_app/login/cubit/cubit.dart';
+import 'package:ramdan_proj/modules/docbook_app/register/cubit/cubit.dart';
 import 'package:ramdan_proj/shared/bloc_observer/bloc_observer.dart';
 import 'package:ramdan_proj/shared/components/constants.dart';
 import 'package:ramdan_proj/shared/network/local/cashe_helper.dart';
 import 'package:ramdan_proj/shared/network/remote/dio_helper/dio_helper.dart';
 import 'package:ramdan_proj/shared/styles/themes.dart';
 import 'package:ramdan_proj/shared/todo_cubit/cubit.dart';
-import 'layout/news_app/cubit/news_cubit.dart';
+import 'layout/docbook_app/docbook_layout.dart';
+import 'layout/docbook_app/doctor_layout_screen.dart';
+import 'modules/docbook_app/login/doc_login_screen.dart';
+import 'modules/docbook_app/on_boarding/on_boarding_screen.dart';
 import 'shared/todo_cubit/states.dart';
 
 void main() async {
   //el method de btdmn en el await ytnfz b3den y3ml run
   WidgetsFlutterBinding.ensureInitialized();
-
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CasheHelper.init();
@@ -25,18 +25,28 @@ void main() async {
   Widget widget;
   bool? onBoarding = CasheHelper.getData(key: 'onBoarding');
   token = CasheHelper.getData(key: 'token');
+  userid = CasheHelper.getData(key: 'userid');
+  doctor = CasheHelper.getData(key: 'doctor');
+  print('start of main');
   print(token);
-  if(onBoarding != null){
-    if(token != null) {
-      widget = const ShopLayout();
+  print(userid);
+  print(doctor);
+  print('end of main');
+  if (onBoarding != null) {
+    if (token != null) {
+      if(doctor==true){
+        widget = const DoctorLayout();
+      }else{
+        widget = const DocBookLayout();
+      }
     } else {
-      widget = ShopLoginScreen();
+      widget = DocLoginScreen();
     }
-  }else{
-    widget = const OnBoardingScreen();
+  } else {
+    widget = const OnBoardingDocScreen();
   }
   runApp(MyApp(
-   // isDark: isDark,
+    // isDark: isDark,
     startWidget: widget,
   ));
 }
@@ -44,7 +54,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   //final bool? isDark;
   final Widget startWidget;
-  const MyApp({super.key,
+  const MyApp({
+    super.key,
     //this.isDark,
     required this.startWidget,
   });
@@ -53,26 +64,20 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => NewsCubit()
-                ..getBusiness()
-                ..getSports()
-                ..getScience(),
-        ),
-        BlocProvider(
           create: (BuildContext context) => AppCubit()
             ..changeAppMode(
-              //fromShared: isDark,
-            ),
+                //fromShared: isDark,
+                ),
         ),
         BlocProvider(
-            create: (BuildContext context) => ShopCubit()
-              ..getHomeData()
-              ..getCategoriesData()
-              ..getFavoritesData()
-              ..getUserData(),
+          create: (context) => DocLoginCubit()..getProfileData(userid.toString()),
         ),
         BlocProvider(
-            create: (BuildContext context)=>DocBookCubit()
+            create: (
+                BuildContext context) => DocBookCubit()
+        ),
+        BlocProvider(
+          create: (context) =>  RegisterCubit(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
@@ -83,7 +88,7 @@ class MyApp extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: ThemeMode.light,
-               // AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            // AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
             home: startWidget,
           );
         },

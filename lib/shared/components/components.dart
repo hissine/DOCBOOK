@@ -53,16 +53,24 @@ Widget defaultFormField({
   bool isPassword = false,
   IconData? suffix,
   Function()? suffixPressed,
+  double borderWidth=1,
+  Color borderColor = Colors.black,
+  double borderRadius=10,
+  bool filled=true,
 }) =>
     TextFormField(
       keyboardType: type,
       controller: controller,
       decoration: InputDecoration(
-        filled: true,
+        filled: filled,
         contentPadding:EdgeInsets.all(5.0) ,
         fillColor: Colors.white,
         enabledBorder:  OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.0),
+          borderRadius: BorderRadius.circular(borderRadius!),
+          borderSide: BorderSide(
+            color: borderColor,
+            width: borderWidth,
+          )
         ),
           labelText: label,
           prefixIcon: Icon(
@@ -77,7 +85,8 @@ Widget defaultFormField({
                 )
               : null,
           border: const OutlineInputBorder(
-          )),
+          ),
+      ),
       onFieldSubmitted: onSubmit,
       onChanged: onChanged,
       onTap: onTap,

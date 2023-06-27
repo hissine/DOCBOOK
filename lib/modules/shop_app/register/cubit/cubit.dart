@@ -12,13 +12,11 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates>{
   static ShopRegisterCubit get(context)=>BlocProvider.of(context);
 
   ShopLoginModel? loginModel;
-
   void userRegister({
     required String email,
     required String password,
     required String name,
     required String phone,
-
   }){
     emit(ShopRegisterLoadingState());
     DioHelper.postData(
@@ -28,7 +26,6 @@ class ShopRegisterCubit extends Cubit<ShopRegisterStates>{
           'email':email,
           'password':password,
           'phone':phone,
-
         },
     ).then((value) {
       print(value.data);
