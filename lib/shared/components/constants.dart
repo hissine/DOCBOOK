@@ -1,16 +1,14 @@
 import '../../layout/docbook_app/cubit/cubit.dart';
-import '../../modules/docbook_app/login/doc_login_screen.dart';
+import '../../modules/docbook_app/login/login_screen.dart';
 import '../network/local/cashe_helper.dart';
 import 'components.dart';
 
 void signOut(context) {
   DocBookCubit.get(context).curIndex = 0;
-  CasheHelper.removeData(
-    key: 'token',
-  );
+  CasheHelper.removeData(key: 'token');
       CasheHelper.removeData(key: 'doctor');
       CasheHelper.removeData(key: 'userid');
-      doctor = false;
+      doctor = null;
       navigateAndFinish(
         context,
         DocLoginScreen(),

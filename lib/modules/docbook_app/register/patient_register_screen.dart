@@ -1,7 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ramdan_proj/modules/docbook_app/login/doc_login_screen.dart';
+import 'package:ramdan_proj/modules/docbook_app/login/login_screen.dart';
 import 'package:ramdan_proj/shared/styles/colors.dart';
 import '../../../shared/components/components.dart';
 import 'cubit/cubit.dart';
@@ -133,7 +133,7 @@ class PatientRegisterScreen extends StatelessWidget {
                           ),
                           defaultFormField(
                             controller: birthdateController,
-                            type: TextInputType.datetime,
+                            type: TextInputType.text,
                             validate: (value){
                               if(value!.isEmpty)
                               {

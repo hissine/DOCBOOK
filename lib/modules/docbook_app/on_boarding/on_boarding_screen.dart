@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:ramdan_proj/modules/docbook_app/login/doc_login_screen.dart';
+import 'package:ramdan_proj/modules/docbook_app/login/login_screen.dart';
 import 'package:ramdan_proj/shared/components/components.dart';
 import 'package:ramdan_proj/shared/network/local/cashe_helper.dart';
 import 'package:ramdan_proj/shared/styles/colors.dart';
@@ -38,14 +38,12 @@ class _OnBoardingDocScreenState extends State<OnBoardingDocScreen> {
     BoardingDocModel(
       image: 'assets/images/second.png',
       title: 'BOOK APPOINTMENT',
-      body:
-          'After you choose the doctor that suits you, \nyou can book your appointment online',
+      body: 'After you choose the doctor that suits you, \nyou can book your appointment online',
     ),
     BoardingDocModel(
       image: 'assets/images/call.png',
       title: 'MAKE VIDEO CALL',
-      body:
-          'Get Ready. Your Own Doctor will start Video call you at booked Time Slot.',
+      body: 'Get Ready. Your Own Doctor will start Video call you at booked Time Slot.',
     ),
   ];
   bool isLast = false;
@@ -70,7 +68,7 @@ class _OnBoardingDocScreenState extends State<OnBoardingDocScreen> {
         actions: [
           TextButton(
             onPressed: submit,
-            child: const Text('Skip'),
+            child: Text('Skip',style: TextStyle(color: defColor),),
           ),
         ],
       ),
@@ -127,6 +125,7 @@ class _OnBoardingDocScreenState extends State<OnBoardingDocScreen> {
                 }
               },
               text: 'Next',
+              background: defColor
             ),
           ],
         ),

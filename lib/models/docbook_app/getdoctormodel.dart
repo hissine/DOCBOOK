@@ -2,6 +2,21 @@
 class getDoctorModel {
   String? sId;
   String? photo;
+  String? region;
+  String? specialty;
+  Null? title;
+  int? price;
+  String? aboutMe;
+  List<Reviews>? reviews;
+  dynamic raiting;
+  int? numReviews;
+  String? userName;
+  String? birthDate;
+  String? sT;
+  String? city;
+  /*
+  String? sId;
+  String? photo;
   String? specialty;
   String? title;
   int? price;
@@ -12,10 +27,12 @@ class getDoctorModel {
   String? userName;
   String? birthDate;
   String? sT;
-
+  String? city;
+*/
   getDoctorModel(
       {this.sId,
         this.photo,
+        this.region,
         this.specialty,
         this.title,
         this.price,
@@ -25,10 +42,30 @@ class getDoctorModel {
         this.numReviews,
         this.userName,
         this.birthDate,
-        this.sT});
+        this.sT,
+        this.city});
 
   getDoctorModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
+    photo = json['photo'];
+    region = json['region'];
+    specialty = json['specialty'];
+    title = json['title'];
+    price = json['price'];
+    aboutMe = json['aboutme'];
+    if (json['reviews'] != null) {
+      reviews = <Reviews>[];
+      json['reviews'].forEach((v) {
+        reviews!.add(new Reviews.fromJson(v));
+      });
+    }
+    raiting = json['raiting'];
+    numReviews = json['numReviews'];
+    userName = json['userName'];
+    birthDate = json['birthDate'];
+    sT = json['__t'];
+    city = json['city'];
+    /*sId = json['_id'];
     photo = json['photo'];
     specialty = json['specialty'];
     title = json['title'];
@@ -45,6 +82,7 @@ class getDoctorModel {
     userName = json['userName'];
     birthDate = json['birthDate'];
     sT = json['__t'];
+    */
   }
 
   Map<String, dynamic> toJson() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:ramdan_proj/layout/docbook_app/cubit/cubit.dart';
 import 'package:ramdan_proj/modules/docbook_app/login/cubit/cubit.dart';
 import 'package:ramdan_proj/modules/docbook_app/register/cubit/cubit.dart';
@@ -11,10 +12,13 @@ import 'package:ramdan_proj/shared/styles/themes.dart';
 import 'package:ramdan_proj/shared/todo_cubit/cubit.dart';
 import 'layout/docbook_app/docbook_layout.dart';
 import 'layout/docbook_app/doctor_layout_screen.dart';
-import 'modules/docbook_app/login/doc_login_screen.dart';
+import 'modules/docbook_app/login/login_screen.dart';
 import 'modules/docbook_app/on_boarding/on_boarding_screen.dart';
 import 'shared/todo_cubit/states.dart';
-
+/*
+change password put old password,
+hogozat
+ */
 void main() async {
   //el method de btdmn en el await ytnfz b3den y3ml run
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,7 +74,15 @@ class MyApp extends StatelessWidget {
                 ),
         ),
         BlocProvider(
-          create: (context) => DocLoginCubit()..getProfileData(userid.toString()),
+          create: (context) => DocLoginCubit()
+            ..getProfileData(userid.toString())
+            ..getDoctorReports(userid.toString())
+            ..getAllDoctors()
+            ..getUserAppointment(userid.toString())
+          ..getDoctorAppointment(userid, DateFormat("yyy-MM-dd").format(DateTime.now()).toString())
+          ,
+        //    DateFormat("yyy-MM-dd","en").format(DateTime.now()).toString()
+          //DateFormat("yyy-MM-dd","en").format(DateTime.tryParse(_focusDay.toString())!)
         ),
         BlocProvider(
             create: (

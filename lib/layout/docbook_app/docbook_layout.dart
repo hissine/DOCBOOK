@@ -16,7 +16,7 @@ class DocBookLayout extends StatelessWidget {
         var cubit = DocBookCubit.get(context);
         final items=<Widget>[
           const Icon(Ionicons.home_outline,size: 30,),
-          const Icon(Ionicons.chatbubble_outline,size: 30,),
+          const Image(image: AssetImage('assets/images/scan.png',),height: 30,width: 30,color: Colors.white,),
           const Icon(Ionicons.calendar_outline,size: 30,),
           const Icon(Ionicons.person_outline,size: 30,),
         ];

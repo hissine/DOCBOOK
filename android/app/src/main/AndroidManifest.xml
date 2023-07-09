@@ -2,7 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ramdan_proj"
     tools:ignore="MissingVersion">
-   <application
+
+
+
+    <application
         android:label="ramdan_proj"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

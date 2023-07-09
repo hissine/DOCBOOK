@@ -48,7 +48,7 @@ Widget defaultFormField({
   Function(String)? onChanged,
   Function()? onTap,
   required String? Function(String?)? validate,
-  required String label,
+  String? label,
   required IconData prefix,
   bool isPassword = false,
   IconData? suffix,
@@ -57,6 +57,7 @@ Widget defaultFormField({
   Color borderColor = Colors.black,
   double borderRadius=10,
   bool filled=true,
+  String? hint,
 }) =>
     TextFormField(
       keyboardType: type,
@@ -73,6 +74,7 @@ Widget defaultFormField({
           )
         ),
           labelText: label,
+          hintText: hint,
           prefixIcon: Icon(
             prefix,
           ),

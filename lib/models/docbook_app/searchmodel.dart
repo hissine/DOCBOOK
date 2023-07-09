@@ -1,38 +1,37 @@
-class searchModel {
+class SearchModel {
   String? message;
-  late List<Doctors> doctors;
+  List<DoctorsModel>? doctors;
   int? totalDoc;
 
-  searchModel({this.message, required this.doctors, this.totalDoc});
+  SearchModel({this.message, required this.doctors, this.totalDoc});
 
-  searchModel.fromJson(Map<String, dynamic> json) {
+  SearchModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     if (json['doctors'] != null) {
-      doctors = <Doctors>[];
+      doctors = <DoctorsModel>[];
       json['doctors'].forEach((v) {
-        doctors!.add(new Doctors.fromJson(v));
+        doctors!.add(DoctorsModel.fromJson(v));
       });
     }
     totalDoc = json['totalDoc'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    if (this.doctors != null) {
-      data['doctors'] = this.doctors!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['message'] = message;
+    if (doctors != null) {
+      data['doctors'] = doctors!.map((v) => v.toJson()).toList();
     }
-    data['totalDoc'] = this.totalDoc;
+    data['totalDoc'] = totalDoc;
     return data;
   }
 }
 
-class Doctors {
+class DoctorsModel {
   String? sId;
   String? photo;
   String? region;
   String? specialty;
-  List<Null>? calender;
   dynamic raiting;
   dynamic numReviews;
   String? userName;
@@ -41,21 +40,21 @@ class Doctors {
   String? sT;
   String? city;
 
-  Doctors(
-      {this.sId,
+  DoctorsModel({
+      this.sId,
       this.photo,
       this.region,
       this.specialty,
-      this.calender,
       this.raiting,
       this.numReviews,
       this.userName,
       this.phone,
       this.birthDate,
       this.sT,
-      this.city});
+      this.city
+  });
 
-  Doctors.fromJson(Map<String, dynamic> json) {
+  DoctorsModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     photo = json['photo'];
     region = json['region'];
@@ -71,18 +70,18 @@ class Doctors {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['photo'] = this.photo;
-    data['region'] = this.region;
-    data['specialty'] = this.specialty;
-    data['raiting'] = this.raiting;
-    data['numReviews'] = this.numReviews;
-    data['userName'] = this.userName;
-    data['phone'] = this.phone;
-    data['birthDate'] = this.birthDate;
-    data['__t'] = this.sT;
-    data['city'] = this.city;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['_id'] = sId;
+    data['photo'] = photo;
+    data['region'] = region;
+    data['specialty'] = specialty;
+    data['raiting'] = raiting;
+    data['numReviews'] = numReviews;
+    data['userName'] = userName;
+    data['phone'] = phone;
+    data['birthDate'] = birthDate;
+    data['__t'] = sT;
+    data['city'] = city;
     return data;
   }
 }

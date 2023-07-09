@@ -14,19 +14,78 @@ class ScanScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-              Icons.arrow_back,
+        title: Text(
+          'Scan',
+          style: TextStyle(
             color: defColor,
+            fontSize: 28
           ),
-          onPressed: (){
-            Navigator.pop(context);
-          },
         ),
+        centerTitle: true,
       ),
-      body: BlocConsumer<DocBookCubit,DocBookStates>(listener: (context, state) {
-
-      },
+      body: BlocConsumer<DocBookCubit,DocBookStates>(
+        listener: (context, state) {
+          if(state is  UploadImageSuccessState){
+            DocBookCubit.get(context).getResult(state.image);
+          }
+          if(state is GetResultSuccessState){
+            showDialog(context: context, builder: (context) {
+              return AlertDialog(
+                content: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        DocBookCubit.get(context).result=='yes' ? "You have this diseas ":'You dont have this diseas',
+                        style: TextStyle(
+                          color: defColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap:(){
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                              BorderRadius.circular(
+                                10,
+                              ),
+                              boxShadow: const [
+                                BoxShadow(
+                                  spreadRadius: 1,
+                                  blurRadius: 1,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Cancel',
+                                style: TextStyle(
+                                  color: defColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          }
+        },
         builder: (context, state) {
           return  Center(
             child: Column(
@@ -92,9 +151,8 @@ class ScanScreen extends StatelessWidget {
               ],
             ),
           );
-
-        },
-      )
+         },
+        ),
      );
   }
 }

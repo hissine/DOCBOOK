@@ -87,6 +87,66 @@ class GetDoctorPictureSuccessState extends DocLoginStates{}
 
 class GetDoctorPictureErrorState extends DocLoginStates{}
 
+class AllDoctorsLoadingState extends DocLoginStates{}
+
+class AllDoctorsSuccessState extends DocLoginStates{}
+
+class AllDoctorsErrorState extends DocLoginStates{}
+
+class UserAppointmentLoadingState extends DocLoginStates{}
+
+class UserAppointmentSuccessState extends DocLoginStates{}
+
+class UserAppointmentErrorState extends DocLoginStates{}
+
+class DoctorProfileLoadingState extends DocLoginStates{}
+
+class DoctorProfileSuccessState extends DocLoginStates{}
+
+class DoctorProfileErrorState extends DocLoginStates{}
+
+class AddReviewLoadingState extends DocLoginStates{}
+
+class AddReviewSuccessState extends DocLoginStates{}
+
+class AddReviewErrorState extends DocLoginStates{}
+
+class AddComplaintsLoadingState extends DocLoginStates{}
+
+class AddComplaintsSuccessState extends DocLoginStates{}
+
+class AddComplaintsErrorState extends DocLoginStates{}
+
+class AppComplaintsLoadingState extends DocLoginStates{}
+
+class AppComplaintsSuccessState extends DocLoginStates{}
+
+class AppComplaintsErrorState extends DocLoginStates{}
+
+class GetDoctorReportsLoadingState extends DocLoginStates{}
+
+class GetDoctorReportsSuccessState extends DocLoginStates{}
+
+class GetDoctorReportsErrorState extends DocLoginStates{}
+
+class GetDoctorAppointmentLoadingState extends DocLoginStates{}
+
+class GetDoctorAppointmentSuccessState extends DocLoginStates{}
+
+class GetDoctorAppointmentErrorState extends DocLoginStates{}
+
+class DeleteAppointmentLoadingState extends DocLoginStates{}
+
+class DeleteAppointmentSuccessState extends DocLoginStates{}
+
+class DeleteAppointmentErrorState extends DocLoginStates{}
+
+
+
+
+
+
+
 
 
 
